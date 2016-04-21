@@ -29,18 +29,21 @@ var move = function move() {
 }
 
 var add = function add(){
-    coors.push(turbo);
+    coors.push(turbo());
     console.log(coors[coors.length -1]);
     coors[coors.length - 1].bounce;
 };
 
-var turbo = {
-    dx: 1,
-    dy: 1,
-    x: Math.floor(Math.random() * 538),
-    y: Math.floor(Math.random() * 538),
-    bounce: move,
-    //move: screensave,
+var turbo = function(){
+    var t = {
+	dx: 1,
+	dy: 1,
+	x: Math.floor(Math.random() * 538),
+	y: Math.floor(Math.random() * 538),
+	bounce: move,
+	//move: screensave,
+    };
+    return t;
 };
 
 dvd.addEventListener("click", add); // button dvds animation
