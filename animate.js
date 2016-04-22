@@ -47,13 +47,14 @@ var bounce = function() {
 }
 
 var theThing = function(){
-    coors = coors.map(function(){
-	
+    coors = coors.map(function(stuff){
+	stuff.dx *= 2;
+	stuff.dy *= 2;
+	return stuff;
     });
 };
 
 bounce();
 
 dvd.addEventListener("click", add); // button dvds animation
-
-//doThing.addeventListener("click", theThing);
+doThing.addeventListener("click", theThing);
