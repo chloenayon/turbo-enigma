@@ -8,25 +8,29 @@ var add = function add(){
 };
 
 var turbo = function(){
-    var logo = new Image();
-    logo.src = "logo_dvd.jpg";
     var move = function move() {
-	ctx.clearRect(this.x, this.y, logo.width/6, logo.height/6);
-   	if (this.x==0 || Math.floor(this.x+(logo.width/6))==538) {
+	var dims = 30;
+	ctx.clearRect(this.x, this.y, dims, dims);
+   	if (this.x==0 || Math.floor(this.x+(dims))==538) {
         	this.dx*=-1;
     	}
-    	if (this.y==0 || Math.floor(this.y+(logo.height/6))==538) {
+    	if (this.y==0 || Math.floor(this.y+(dims))==538) {
         	this.dy*=-1;
     	}
     	this.x+=this.dx;
     	this.y+=this.dy;
-    	ctx.drawImage(logo,this.x,this.y,logo.width/6,logo.height/6);               
+	ctx.fillStyle = "rgb(" + this.r.toString() + "," + this.g.toString() + "," + this.b.toString() + ")";
+	ctx.fillRect(this.x, this.y,dims,dims);
     };	
     var t = {
+	r: 255,
+	g: 0, 
+	b: 255,
 	dx: 1,
 	dy: 1,
-	x: Math.floor(Math.random() * (520-logo.width/6)-15)+15,
-	y: Math.floor(Math.random() * (520-logo.height/6)-15)+15,
+	//remember to change the numbers (V) if you change dims
+	x: Math.floor(Math.random() * (490)-15)+15,
+	y: Math.floor(Math.random() * (490)-15)+15,
 	move: move
     };
     return t;
@@ -42,6 +46,14 @@ var bounce = function() {
     var id=window.requestAnimationFrame(animate);
 }
 
+var theThing = function(){
+    coors = coors.map(function(){
+	
+    });
+};
+
 bounce();
 
 dvd.addEventListener("click", add); // button dvds animation
+
+//doThing.addeventListener("click", theThing);
